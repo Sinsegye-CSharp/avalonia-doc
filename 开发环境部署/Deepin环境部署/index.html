@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh_CN" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Deepin下开发环境部署 - 中科时代Avalonia学习资料</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Deepin\u4e0b\u5f00\u53d1\u73af\u5883\u90e8\u7f72";
+        var mkdocs_page_input_path = "\u5f00\u53d1\u73af\u5883\u90e8\u7f72/Deepin\u73af\u5883\u90e8\u7f72.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> 中科时代Avalonia学习资料
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">开发环境部署</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Deepin下开发环境部署</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1dotnet">1、dotnet环境安装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2avalonia">2、Avalonia相关项目模板安装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3rider">3、开发利器，Rider安装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4">4、可视化设计器安装</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Ubuntu%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">Ubuntu下开发环境部署</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">打包配置</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E6%89%93%E5%8C%85%E9%85%8D%E7%BD%AE/UBuntu%E6%89%93%E5%8C%85/">AvaloniaUI在Ubuntu打包方式</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">中科时代Avalonia学习资料</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>开发环境部署 &raquo;</li>
+      <li>Deepin下开发环境部署</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="deepin">Deepin下开发环境部署</h1>
+<p>如果要在Deepin上进行相应项目开发，需要先进行相应的dotnet环境部署，然后使用跨平台IDE Rider进行开发，由于平台限制，dotnet需要选取.net 6及以上版本。</p>
+<h2 id="1dotnet">1、dotnet环境安装</h2>
+<p>打开终端，并运行以下命令，添加dotnet仓库</p>
+<pre><code class="language-Bash">wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+rm packages-microsoft-prod.deb
+</code></pre>
+<p>确保安装完成后，进行SDK的安装：</p>
+<pre><code class="language-Bash">sudo apt-get update &amp;&amp; \
+  sudo apt-get install -y dotnet-sdk-6.0
+</code></pre>
+<p>这里安装的是.net 6.0,如有需要可以运行命令<code>sudo apt-get install -y dotnet-sdk-7.0</code>安装.net 7。  </p>
+<p>安装完成后，可以通过命令<code>dotnet --list-sdks</code>查看已安装的SDK。</p>
+<h2 id="2avalonia">2、Avalonia相关项目模板安装</h2>
+<p>当dotnet SDK安装完成后，就可以进行Avalonia项目的开发，但是Avalonia有其特殊的目录结构，所以他提供了一些项目模板，供我们方便快捷的进行项目创建：  </p>
+<p>如果已经安装了.net 7 SDK，则运行以下命令进行项目模板安装：</p>
+<pre><code>dotnet new install Avalonia.Templates
+</code></pre>
+<p>如果只安装了.net 6未安装.net 7,则需要运行以下命令来进行安装：</p>
+<pre><code>dotnet new -i Avalonia.Templates
+</code></pre>
+<h2 id="3rider">3、开发利器，Rider安装</h2>
+<p><a href="https://www.jetbrains.com.cn/rider/">Rider</a>是JetBrains推出的一款跨平台.net IDE，它对Avalonia具有天然的支持，我们强烈建议您使用Rider进行开发，在Linux上，目前也仅有这一款软件可以进行Avalonia开发（在Windows上，Visual Studio也支持），不过它是收费软件，提供30天的试用期，您可以试用后进行购买（Rider也会有预览版推出，不需要收费，并且可以体验Rider一些尚在开发的新功能）。</p>
+<p>在Deepin上进行Rider安装非常简单，因为Rider已经存在于Deepin的应用商店，打开Deepin的应用商店进行安装即可。</p>
+<h2 id="4">4、可视化设计器安装</h2>
+<p>当上述步骤都完成以后，距离开发我们就只差一步，Avalonia插件安装，这个插件为Rider提供了可视化设计器的功能，有了这个插件，您就可以在Rider里面享受在VS中开发WPF/Winform一样的开发体验。  </p>
+<p>首先打开您的Rider软件，在项目选择界面，找到左下角的<code>Configure</code>按钮，打开下拉框，打开<code>Plugins</code>界面
+在<code>Plugins</code>界面中，搜索<code>Avalonia</code>,然后找到<code>AvaloniaRider</code>插件，点击进行安装，然后按照要求重启。   </p>
+<p>进行完上面这几步后，恭喜您已经完成整个开发环境的搭建，接下来就可以进行项目开发了。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Ubuntu%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" class="btn btn-neutral float-right" title="Ubuntu下开发环境部署">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Ubuntu%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

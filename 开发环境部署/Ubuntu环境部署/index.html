@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh_CN" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Ubuntu下开发环境部署 - 中科时代Avalonia学习资料</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Ubuntu\u4e0b\u5f00\u53d1\u73af\u5883\u90e8\u7f72";
+        var mkdocs_page_input_path = "\u5f00\u53d1\u73af\u5883\u90e8\u7f72/Ubuntu\u73af\u5883\u90e8\u7f72.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> 中科时代Avalonia学习资料
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">开发环境部署</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Deepin%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">Deepin下开发环境部署</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Ubuntu下开发环境部署</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1dotnet">1、dotnet环境安装</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ubuntu-1604dotnet">Ubuntu 16.04上安装dotnet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ubuntu-1804dotnet">Ubuntu 18.04上安装dotnet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ubuntu-2004dotnet">Ubuntu 20.04上安装dotnet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ubuntu-2204dotnet">Ubuntu 22.04上安装dotnet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ubuntu-2210dotnet">Ubuntu 22.10上安装dotnet</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2avalonia">2、Avalonia相关项目模板安装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3rider">3、开发利器，Rider安装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4">4、可视化设计器安装</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">打包配置</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E6%89%93%E5%8C%85%E9%85%8D%E7%BD%AE/UBuntu%E6%89%93%E5%8C%85/">AvaloniaUI在Ubuntu打包方式</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">中科时代Avalonia学习资料</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>开发环境部署 &raquo;</li>
+      <li>Ubuntu下开发环境部署</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ubuntu">Ubuntu下开发环境部署</h1>
+<p>如果要在Ubuntu上进行相应项目开发，需要先进行相应的dotnet环境部署，然后使用跨平台IDE Rider进行开发，由于平台限制，dotnet需要选取.net 6及以上版本。</p>
+<h2 id="1dotnet">1、dotnet环境安装</h2>
+<p>Ubuntu环境下，安装dotnet环境比较复杂，需要根据Ubuntu版本和需要安装的dotnet版本进行区分</p>
+<h3 id="ubuntu-1604dotnet">Ubuntu 16.04上安装dotnet</h3>
+<p>在Ubuntu 16.04中，目前仅支持.NET 6，但是不支持Ubuntu源安装，只能使用Microsoft源安装：</p>
+<ol>
+<li>添加 Microsoft 包存储库</li>
+</ol>
+<pre><code class="language-Bash">wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+rm packages-microsoft-prod.debbas
+</code></pre>
+<ol>
+<li>安装SDK</li>
+</ol>
+<pre><code class="language-bash">sudo apt-get update &amp;&amp; \
+  sudo apt-get install -y dotnet-sdk-6.0
+</code></pre>
+<h3 id="ubuntu-1804dotnet">Ubuntu 18.04上安装dotnet</h3>
+<p>在Ubuntu 18.04中，目前支持.NET 6和.NET 7，但是不支持Ubuntu源安装，只能使用Microsoft源安装：</p>
+<ol>
+<li>添加 Microsoft 包存储库</li>
+</ol>
+<pre><code class="language-Bash">wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+rm packages-microsoft-prod.deb
+</code></pre>
+<ol>
+<li>安装SDK</li>
+</ol>
+<pre><code class="language-bash">## .net 6安装
+sudo apt-get update &amp;&amp; \
+  sudo apt-get install -y dotnet-sdk-6.0
+
+## 或者安装.net 7
+sudo apt-get update &amp;&amp; \
+  sudo apt-get install -y dotnet-sdk-7.0
+</code></pre>
+<h3 id="ubuntu-2004dotnet">Ubuntu 20.04上安装dotnet</h3>
+<p>在Ubuntu 20.04中，目前支持.NET 6和.NET 7，但是不支持Ubuntu源安装，只能使用Microsoft源安装：</p>
+<ol>
+<li>添加 Microsoft 包存储库</li>
+</ol>
+<pre><code class="language-Bash">wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+rm packages-microsoft-prod.deb
+</code></pre>
+<ol>
+<li>安装SDK</li>
+</ol>
+<pre><code class="language-bash">## .net 6安装
+sudo apt-get update &amp;&amp; \
+  sudo apt-get install -y dotnet-sdk-6.0
+
+## 或者安装.net 7
+sudo apt-get update &amp;&amp; \
+  sudo apt-get install -y dotnet-sdk-7.0
+</code></pre>
+<h3 id="ubuntu-2204dotnet">Ubuntu 22.04上安装dotnet</h3>
+<p>在Ubuntu 20.04中，目前支持.NET 6和.NET 7，其中.net 6已经在Ubuntu源中受支持，但是.net 7不支持，所以安装方式需要分情况：</p>
+<ol>
+<li>只需要. net 6，不需要.net 7</li>
+</ol>
+<p>在只需要.net 6的时候，使用Ubuntu源既可，直接打开终端，运行以下命令：</p>
+<pre><code class="language-Bash">sudo apt-get update &amp;&amp; \
+  sudo apt-get install -y dotnet-sdk-6.0
+</code></pre>
+<ol>
+<li>需要.net 7</li>
+</ol>
+<p>在需要.net 7的时候， 就需要添加Microsoft源进行安装，如果同时需要安装.net 6的情况下，就需要先屏蔽Ubuntu源中的.net支持，都使用Microsoft安装，<strong><em>如果同时使用两个源进行安装，会出现问题</em></strong>。</p>
+<p>屏蔽Ubuntu中dotnet源支持：</p>
+<p>① 先删除已经安装的.net版本</p>
+<pre><code class="language-Bash">sudo apt remove 'dotnet*' 'aspnet*' 'netstandard*'
+</code></pre>
+<p>② 创建<code>/etc/apt/preferences</code>文件</p>
+<pre><code class="language-sh">touch /etc/apt/preferences
+</code></pre>
+<p>③ 在编辑器中打开 <code>/etc/apt/preferences</code> 并添加以下设置，以防止以 <code>dotnet</code>、 <code>aspnetcore</code>或 <code>netstandard</code> 开头的包源自分发的存储库</p>
+<pre><code class="language-Bash">Package: dotnet* aspnet* netstandard*
+Pin: origin &quot;&lt;your-package-source&gt;&quot;
+Pin-Priority: -10
+</code></pre>
+<p>其中<code>&lt;your-package-source&gt;</code>需要替换为自己的源，如我使用的是中科大的源，则我填入的就是<code>mirrors.ustc.edu.cn</code>,我的文件如下：</p>
+<pre><code>Package: dotnet* aspnet* netstandard*
+Pin: origin &quot;mirrors.ustc.edu.cn&quot;
+Pin-Priority: -1
+</code></pre>
+<p>④ 添加 Microsoft 包存储库</p>
+<pre><code class="language-Bash"># Get Ubuntu version
+declare repo_version=$(if command -v lsb_release &amp;&gt; /dev/null; then lsb_release -r -s; else grep -oP '(?&lt;=^VERSION_ID=).+' /etc/os-release | tr -d '&quot;'; fi)
+
+# Download Microsoft signing key and repository
+wget https://packages.microsoft.com/config/ubuntu/$repo_version/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+
+# Install Microsoft signing key and repository
+sudo dpkg -i packages-microsoft-prod.deb
+
+# Clean up
+rm packages-microsoft-prod.deb
+
+# Update packages
+sudo apt update
+</code></pre>
+<p>⑤ 安装SDK</p>
+<pre><code class="language-bash">## .net 6安装
+sudo apt-get update &amp;&amp; \
+  sudo apt-get install -y dotnet-sdk-6.0
+
+## 或者安装.net 7
+sudo apt-get update &amp;&amp; \
+  sudo apt-get install -y dotnet-sdk-7.0
+</code></pre>
+<h3 id="ubuntu-2210dotnet">Ubuntu 22.10上安装dotnet</h3>
+<p>在Ubuntu 22.10中，目前支持.NET 6和.NET 7，且都支持Ubuntu源的安装，所以直接使用命令安装既可：</p>
+<pre><code class="language-bash">## .net 6安装
+sudo apt-get update &amp;&amp; \
+  sudo apt-get install -y dotnet-sdk-6.0
+
+## 或者安装.net 7
+sudo apt-get update &amp;&amp; \
+  sudo apt-get install -y dotnet-sdk-7.0
+</code></pre>
+<h2 id="2avalonia">2、Avalonia相关项目模板安装</h2>
+<p>当dotnet SDK安装完成后，就可以进行Avalonia项目的开发，但是Avalonia有其特殊的目录结构，所以他提供了一些项目模板，供我们方便快捷的进行项目创建：  </p>
+<p>如果已经安装了.net 7 SDK，则运行以下命令进行项目模板安装：</p>
+<pre><code>dotnet new install Avalonia.Templates
+</code></pre>
+<p>如果只安装了.net 6未安装.net 7,则需要运行以下命令来进行安装：</p>
+<pre><code>dotnet new -i Avalonia.Templates
+</code></pre>
+<h2 id="3rider">3、开发利器，Rider安装</h2>
+<p><a href="https://www.jetbrains.com.cn/rider/">Rider</a>是JetBrains推出的一款跨平台.net IDE，它对Avalonia具有天然的支持，我们强烈建议您使用Rider进行开发，在Linux上，目前也仅有这一款软件可以进行Avalonia开发（在Windows上，Visual Studio也支持），不过它是收费软件，提供30天的试用期，您可以试用后进行购买（Rider也会有预览版推出，不需要收费，并且可以体验Rider一些尚在开发的新功能）。</p>
+<p>在Ubuntu上进行Rider安装非常简单，因为Rider已经存在于Ubuntu的snap商店中，打开Ubuntu的Ubuntu Software软件，搜索Rider进行安装即可。</p>
+<p><em><em> </em>Ubuntu在16.04 LTS及以后版本具有Snap安装软件功能</em></p>
+<h2 id="4">4、可视化设计器安装</h2>
+<p>当上述步骤都完成以后，距离开发我们就只差一步，Avalonia插件安装，这个插件为Rider提供了可视化设计器的功能，有了这个插件，您就可以在Rider里面享受在VS中开发WPF/Winform一样的开发体验。  </p>
+<p>首先打开您的Rider软件，在项目选择界面，找到左下角的<code>Configure</code>按钮，打开下拉框，打开<code>Plugins</code>界面
+在<code>Plugins</code>界面中，搜索<code>Avalonia</code>,然后找到<code>AvaloniaRider</code>插件，点击进行安装，然后按照要求重启。   </p>
+<p>进行完上面这几步后，恭喜您已经完成整个开发环境的搭建，接下来就可以进行项目开发了。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Deepin%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" class="btn btn-neutral float-left" title="Deepin下开发环境部署"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../%E6%89%93%E5%8C%85%E9%85%8D%E7%BD%AE/UBuntu%E6%89%93%E5%8C%85/" class="btn btn-neutral float-right" title="AvaloniaUI在Ubuntu打包方式">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Deepin%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../%E6%89%93%E5%8C%85%E9%85%8D%E7%BD%AE/UBuntu%E6%89%93%E5%8C%85/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
